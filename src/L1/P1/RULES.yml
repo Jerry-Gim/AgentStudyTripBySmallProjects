@@ -1,0 +1,25 @@
+# 桌面文件分类规则
+# 一行一个后缀，缩进用空格；支持多段后缀如 .tar.gz
+Images:
+  - .jpg
+  - .jpeg
+  - .png
+  - .gif
+  - .bmp
+  - .dcm
+
+Documents:
+  - .pdf
+  - .docx
+  - .doc
+  - .txt
+  - .pptx
+  - .ppt
+
+Archives:
+  - .zip
+  - .rar
+  - .7z
+  - .tar.gz   # 多级后缀直接写全即可
+
+Others: []
