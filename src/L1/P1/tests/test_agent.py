@@ -1,5 +1,6 @@
 '''
 测试代码
+(agent) D:\AG\AgentStudyTripBySmallProjects\src\L1\P1>python -m pytest -v --tb=long
 '''
 
 import shutil
@@ -11,7 +12,7 @@ import pytest
 from file_organizer_agent import classifyByRule, RULES, move_file
 
 # ---------- 1. classify 大小写不敏感 ----------
-@pytest.mark.paramterize("name", ["photo.JPG", "IMG.Png", "screen.GIF"])
+@pytest.mark.parametrize("name", ["photo.JPG", "IMG.Png", "screen.GIF"])
 def test_classify_case_insensitive(name):
     assert classifyByRule(name) == "Images"
 

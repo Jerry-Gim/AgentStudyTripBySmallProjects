@@ -1,0 +1,10 @@
+{
+    "API_KEY": "9e0385deee879b822b37bd37eb01c017",
+    "BASE_URL": "https://api.openweathermap.org/data/2.5/weather",
+    "FORECAST_URL": "https://api.openweathermap.org/data/2.5/forecast",    
+    "CACHE_TTL": 600,
+    "DEFAULT_CITY": "Beijing",
+    "DEFAULT_UNITS": "metric",
+    "LANG": "zh_cn",
+    "FORECAST_CNT": 3
+}

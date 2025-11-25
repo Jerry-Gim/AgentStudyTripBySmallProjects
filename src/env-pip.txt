@@ -49,8 +49,10 @@ jupyterlab @ file:///C:/miniconda3/conda-bld/jupyterlab_1758125038797/work
 jupyterlab_pygments @ file:///C:/b/abs_d5alfet8m6/croot/jupyterlab_pygments_1741124274578/work
 jupyterlab_server @ file:///C:/miniconda3/conda-bld/jupyterlab_server_1761751443563/work
 jupyterlab_widgets @ file:///C:/b/abs_6566by8dag/croot/jupyterlab_widgets_1752066574111/work
+markdown-it-py @ file:///C:/b/abs_a5bfngz6fu/croot/markdown-it-py_1684279915556/work
 MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
 matplotlib-inline @ file:///C:/miniconda3/conda-bld/matplotlib-inline_1758520260695/work
+mdurl @ file:///C:/miniconda3/conda-bld/mdurl_1758552289883/work
 mistune @ file:///C:/b/abs_77yql3poyz/croot/mistune_1741124004410/work
 mkl-service==2.4.0
 mkl_fft @ file:///C:/Users/dev-admin/mkl/mkl_fft_1730823082242/work
@@ -96,6 +98,7 @@ referencing @ file:///C:/b/abs_09f4hj6adf/croot/referencing_1699012097448/work
 requests @ file:///C:/b/abs_f53smfvswb/croot/requests_1756709376206/work
 rfc3339-validator @ file:///C:/b/abs_ddfmseb_vm/croot/rfc3339-validator_1683077054906/work
 rfc3986-validator @ file:///C:/b/abs_6e9azihr8o/croot/rfc3986-validator_1683059049737/work
+rich @ file:///C:/miniconda3/conda-bld/rich_1760375660895/work
 rpds-py @ file:///C:/b/abs_0c6z5kcdb6/croot/rpds-py_1736545465023/work
 schedule==1.2.2
 Send2Trash @ file:///C:/b/abs_7e73ol18dl/croot/send2trash_1736542724140/work
