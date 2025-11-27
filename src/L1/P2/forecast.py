@@ -6,7 +6,8 @@ fetch & parse / forecast 端点
 import requests
 from config import config
 from cache import get as cache_get, set as cache_set
-from ui import print_table  # 接入ui扩展
+from ui import print_table  # 来自拓展三：接入ui扩展
+from error_helper import explain_exception      # 来自拓展四：接入错误解释处理
 
 URL = config["FORECAST_URL"]
 CNT = config["FORECAST_CNT"]
@@ -35,6 +36,10 @@ def fetch_forecast(city: str, units: str = "metric") -> list[dict]:
         slots = data["list"][:CNT]
         cache_set(city, units, data, True)
         return slots
+    except requests.HTTPError as e:     # 来自拓展四，返回结果细分解释
+        msg = explain_exception(e.response.status_code, e.response.text, city)  # 细分HTTP错误解释
+        print(f"[Agent] {msg}")
+        return []
     except requests.exceptions.RequestException as e:
         print(f"[Agent] 预报接口错误: {e}")
         return []
@@ -42,7 +47,7 @@ def fetch_forecast(city: str, units: str = "metric") -> list[dict]:
 def format_forecast(slots: list[dict], units_label: str, ui: bool = False) -> str:
     """把list[dict]拼成一行一行自然语言, 如果有支持rich且开启，则使用ui打印"""
     # 解析结构参考https://openweathermap.org/api/hourly-forecast#geo5
-    if not ui:
+    if not ui:      # 来自拓展三：处理ui
         if not slots:
             return "（暂无预报数据）"
         lines = []
@@ -53,7 +58,7 @@ def format_forecast(slots: list[dict], units_label: str, ui: bool = False) -> st
             desc = s["weather"][0]["description"]
             lines.append(f"{time_str}  {temp}℃ {desc}")
         return "\n".join(lines)
-    else:
+    else:       # 来自拓展三：ui展示
         """改成 rich 表格，不再拼接字符串"""
         if not slots:
             return "（暂无预报数据）"

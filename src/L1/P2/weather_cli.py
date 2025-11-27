@@ -45,7 +45,7 @@ def parse_weather(data: dict, unit_label: str) -> str:
     wind = data["wind"]["speed"]
 
     return (f"{city} 今天 {weather} "
-            f"{temp}度，最高{temp_max}度 "
+            f"{temp}℃↑{temp_max}℃ "
             f"湿度{humidity}%，风速{wind} {unit_label} "
             f"体感{'炎热' if temp>30 else '舒适' if temp>15 else '寒冷'}")
 

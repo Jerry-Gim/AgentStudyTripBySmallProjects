@@ -7,7 +7,17 @@ import os
 import sys
 from pathlib import Path
 
-_CONFIG_FILE = Path(__file__).with_name("settings.json")
+def _base_dir() -> Path:
+    """
+    用于区分EXE运行路径搜索和Script调试搜索
+    """
+    # PyInstaller 运行时
+    if getattr(sys, 'frozen', False):
+        return Path(sys.executable).resolve().parent
+    # 正常python开发运行script
+    return Path(__file__).resolve().parent
+
+_CONFIG_FILE = _base_dir() / "settings.json"
 
 def load_confg() -> dict:
     if not _CONFIG_FILE.exists():

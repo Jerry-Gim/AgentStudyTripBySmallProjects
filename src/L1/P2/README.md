@@ -111,8 +111,12 @@
     - API 配额超限 → 返回 401，提示“请检查 OWM_KEY”
 5. 打包为独立可执行文件：
    `
-    pyinstaller -F weather_cli.py
+    pyinstaller weather_cli_4.spec      # 纯单个exe文件无dll
+    或者
+    pyinstaller -D -n weather_cli weather_cli.spec   # 带dll文件
     `
     生成的 weather_cli.exe 可放到任意 Windows 电脑双击使用。
+  * weather_cli_4.spec为跨平台的打包配置文件
+  * 注意区分打包EXE情况下和script情况下寻找json的路径区分
 
 为了保护key安全，可以将settings.json放到.gitignore中

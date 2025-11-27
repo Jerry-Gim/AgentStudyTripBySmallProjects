@@ -18,6 +18,7 @@ from config import config
 from cache import get as cache_get, set as cache_set  
 from forecast import fetch_forecast, format_forecast  
 from ui import print_current, print_table  
+from error_helper import explain_exception      # 导入异常解释模块
 
 import requests
 
@@ -40,12 +41,16 @@ def fetch_weather(city: str, units: str = "metrics") -> dict:
     }
     try:
         resp = requests.get(BASE_URL, params=params, timeout=10)
-        resp.raise_for_status()      
+        resp.raise_for_status()         # 这里可能抛HTTP exceptions
         data = resp.json()
         cache_set(city, units, data)
         return data
+    except requests.HTTPError as e:
+        msg = explain_exception(e.response.status_code, e.response.text, city)  # 细分HTTP错误解释
+        print(f"[Agent] {msg}")
+        sys.exit(2)
     except requests.exceptions.RequestException as e:
-        print(f"[Agent] 网络错误：{e}")
+        print(f"[Agent] 网络错误：{e}")     
         sys.exit(2)
 
 def parse_weather(data: dict, unit_label: str) -> None:
@@ -104,6 +109,8 @@ def main(argv = None):
 
 if __name__ == "__main__":
     main()
+    if len(sys.argv) == 1:            # 只有双击（无参数）才暂停
+        input("\n按回车键退出...")
 
 
 

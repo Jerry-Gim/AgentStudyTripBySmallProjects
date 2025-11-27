@@ -42,6 +42,7 @@ def get(city: str, units: str, ttl: int, fc: bool = False) -> Optional[dict]:
     item = db.get(key)
     if not item:
         return None
+    # print(f"{_now()} - {item['ts']} = {_now() - item['ts']}, ttl = {ttl}")
     if _now() - item["ts"] > ttl:
         return None
     return item["data"]
